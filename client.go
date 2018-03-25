@@ -7,13 +7,13 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
-	"github.com/ServiceComb/auth"
-	"github.com/ServiceComb/go-chassis/security"
 	"io/ioutil"
 	"net/http"
-	//"net/url"
 	"strings"
 	"time"
+
+	"github.com/ServiceComb/auth"
+	"github.com/ServiceComb/go-chassis/security"
 )
 
 //URLClientOption is a struct which provides options for client
@@ -66,7 +66,7 @@ func (client *URLClient) HttpDo(method string, rawURL string, headers http.Heade
 
 	resp, err = client.Client.Do(req)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Unable to connect to ServiceCenter.error: %s", err))
+		return nil, err
 	}
 
 	if client.options.Verbose {
